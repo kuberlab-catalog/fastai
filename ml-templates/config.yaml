@@ -101,3 +101,8 @@ spec:
     name: code
     subPath: code
     clusterStorage: {{ .storage.value }}
+  - mountPath: /dev/shm
+    name: shared
+    emptyDir:
+      sizeLimit: 8096Mi
+      medium: Memory
