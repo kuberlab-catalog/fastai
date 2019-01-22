@@ -60,6 +60,7 @@ spec:
           cpu: "2"
           memory: 4Gi
       default_volume_mapping: true
+  {{- end }}
   uix:
   - name: jupyter
     displayName: Jupyter
