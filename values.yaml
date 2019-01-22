@@ -10,10 +10,22 @@ src:
     name: "Source Code"
     kind: git
 
+useGPU:
+  value: false
+  wizard:
+    name: Enable GPU in Jupyter
+    kind: boolean
+
 tensorboard:
   value: true
   wizard:
     name: Install Tensorboard
+    kind: boolean
+
+downloadTutorials:
+  value: false
+  wizard:
+    name: Download fast.ai courses and examples
     kind: boolean
 
 dataset:

@@ -22,8 +22,8 @@ spec:
         gpu: "kuberlab/fastai:latest-gpu"
         cpu: "kuberlab/fastai:latest-cpu"
       command: >-
-        python $SRC_DIR/src/example.py
-      workdir: "$TRAINING_DIR"
+        python src/example.py
+      workdir: "$SRC_DIR"
       resources:
         accelerators:
           gpu: 0
@@ -34,7 +34,32 @@ spec:
           cpu: "2"
           memory: 4Gi
       default_volume_mapping: true
-
+  {{- if .downloadTutorials.value }}
+  - name: kibernetika-init
+    resources:
+    - name: worker
+      replicas: 1
+      restartPolicy: Never
+      maxRestartCount: 0
+      allowFail: true
+      images:
+        gpu: "kuberlab/fastai:latest-gpu"
+        cpu: "kuberlab/fastai:latest-cpu"
+      command: >-
+        git clone https://github.com/fastai/fastai && cd fastai;
+        mkdir $CODE_DIR/fastai_courses && mkdir $CODE_DIR/fastai_examples;
+        cp -r courses/* $CODE_DIR/fastai_courses/ && cp -r examples/* $CODE_DIR/fastai_examples/
+      workdir: "$SRC_DIR"
+      resources:
+        accelerators:
+          gpu: 0
+        requests:
+          cpu: "1"
+          memory: 1Gi
+        limits:
+          cpu: "2"
+          memory: 4Gi
+      default_volume_mapping: true
   uix:
   - name: jupyter
     displayName: Jupyter
@@ -43,7 +68,11 @@ spec:
       cpu: "kuberlab/fastai:latest-cpu"
     resources:
       accelerators:
+      {{- if .useGPU.value }}
+        gpu: 1
+      {{- else }}
         gpu: 0
+      {{- end }}
       requests:
         cpu: 100m
         memory: 64Mi
