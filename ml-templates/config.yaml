@@ -11,31 +11,7 @@ spec:
     manager: "pip{{.python_version.value}}"
   default_mount_path: "/notebooks"
   tasks:
-  - name: train
-    resources:
-    - name: worker
-      replicas: 1
-      restartPolicy: Never
-      maxRestartCount: 0
-      allowFail: true
-      images:
-        gpu: "kuberlab/fastai:latest-gpu"
-        cpu: "kuberlab/fastai:latest-cpu"
-      command: >-
-        python src/example.py
-      workdir: "$SRC_DIR"
-      resources:
-        accelerators:
-          gpu: 0
-        requests:
-          cpu: "1"
-          memory: 1Gi
-        limits:
-          cpu: "2"
-          memory: 4Gi
-      default_volume_mapping: true
-  {{- if .downloadTutorials.value }}
-  - name: kibernetika-init
+  - name: install-tutorials
     resources:
     - name: worker
       replicas: 1
@@ -60,7 +36,29 @@ spec:
           cpu: "2"
           memory: 4Gi
       default_volume_mapping: true
-  {{- end }}
+  - name: train
+    resources:
+    - name: worker
+      replicas: 1
+      restartPolicy: Never
+      maxRestartCount: 0
+      allowFail: true
+      images:
+        gpu: "kuberlab/fastai:latest-gpu"
+        cpu: "kuberlab/fastai:latest-cpu"
+      command: >-
+        python src/example.py
+      workdir: "$SRC_DIR"
+      resources:
+        accelerators:
+          gpu: 0
+        requests:
+          cpu: "1"
+          memory: 1Gi
+        limits:
+          cpu: "2"
+          memory: 4Gi
+      default_volume_mapping: true
   uix:
   - name: jupyter
     displayName: Jupyter

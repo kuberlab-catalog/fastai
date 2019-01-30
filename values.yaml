@@ -22,12 +22,6 @@ tensorboard:
     name: Install Tensorboard
     kind: boolean
 
-downloadTutorials:
-  value: false
-  wizard:
-    name: Download fast.ai courses and examples
-    kind: boolean
-
 dataset:
  value: 'mnist'
  version: '1.0.0'

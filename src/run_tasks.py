@@ -31,6 +31,8 @@ def main():
     for task in app.tasks:
         if task.name == current_task_name:
             continue
+        if task.name == "install-tutorials":
+            continue
 
         LOG.info("Start task %s..." % task.name)
         started = task.start()
