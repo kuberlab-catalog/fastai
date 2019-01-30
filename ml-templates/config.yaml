@@ -69,6 +69,38 @@ spec:
           cpu: "2"
           memory: 4Gi
       default_volume_mapping: true
+  - name: get-dogscats
+    resources:
+    - name: worker
+      replicas: 1
+      restartPolicy: Never
+      maxRestartCount: 0
+      allowFail: true
+      images:
+      {{- if .useTutorialsImage.value }}
+        gpu: "kuberlab/fastai:0.7.0"
+        cpu: "kuberlab/fastai:0.7.0-gpu"
+      {{- else }}
+        gpu: "kuberlab/fastai:latest-gpu"
+        cpu: "kuberlab/fastai:latest-cpu"
+      {{- end }}
+      command: >-
+        wget http://files.fast.ai/data/dogscats.zip;
+        apt-get install unzip;
+        unzip dogscats.zip;
+        cd dogscats;
+        kdataset push $WORKSPACE_NAME fastai:1.0.0-dogscats --create --publish;
+      workdir: "$SRC_DIR"
+      resources:
+        accelerators:
+          gpu: 0
+        requests:
+          cpu: "1"
+          memory: 1Gi
+        limits:
+          cpu: "2"
+          memory: 4Gi
+      default_volume_mapping: true
   uix:
   - name: jupyter
     displayName: Jupyter
