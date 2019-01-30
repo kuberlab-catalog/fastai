@@ -4,8 +4,7 @@ RUN pip --no-cache-dir install tensorboardX
 
 RUN conda install pytorch==0.3.1 -c pytorch
 
-RUN pip install horovod && \
-  pip install https://download.pytorch.org/whl/cu91/torch-0.3.1-cp36-cp36m-linux_x86_64.whl && \
+RUN pip install https://download.pytorch.org/whl/cu91/torch-0.3.1-cp36-cp36m-linux_x86_64.whl && \
   pip install tensorflow-gpu==1.9.0 && \
   pip install fastai==0.7.0 && pip install torchtext==0.2.3
 
