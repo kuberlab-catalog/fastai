@@ -89,7 +89,7 @@ spec:
         apt-get install unzip;
         unzip dogscats.zip;
         cd dogscats;
-        kdataset push $WORKSPACE_NAME fastai:1.0.0-dogscats --create --publish;
+        kdataset push $WORKSPACE_NAME fastai:1.0.0-dogscats --create --publish
       workdir: "$SRC_DIR"
       resources:
         accelerators:
