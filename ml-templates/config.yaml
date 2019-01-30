@@ -57,7 +57,7 @@ spec:
         cpu: "kuberlab/fastai:latest-cpu"
       {{- end }}
       command: >-
-        python src/example.py
+        python src/example.py --train-dir $TRAINING_DIR
       workdir: "$SRC_DIR"
       resources:
         accelerators:
