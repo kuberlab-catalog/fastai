@@ -19,8 +19,13 @@ spec:
       maxRestartCount: 0
       allowFail: true
       images:
+      {{- if .useTutorialsImage.value }}
+        gpu: "kuberlab/fastai:0.7.0"
+        cpu: "kuberlab/fastai:0.7.0-gpu"
+      {{- else }}
         gpu: "kuberlab/fastai:latest-gpu"
         cpu: "kuberlab/fastai:latest-cpu"
+      {{- end }}
       command: >-
         git clone https://github.com/fastai/fastai && cd fastai;
         mkdir $CODE_DIR/fastai_courses && mkdir $CODE_DIR/fastai_examples;
@@ -44,8 +49,13 @@ spec:
       maxRestartCount: 0
       allowFail: true
       images:
+      {{- if .useTutorialsImage.value }}
+        gpu: "kuberlab/fastai:0.7.0"
+        cpu: "kuberlab/fastai:0.7.0-gpu"
+      {{- else }}
         gpu: "kuberlab/fastai:latest-gpu"
         cpu: "kuberlab/fastai:latest-cpu"
+      {{- end }}
       command: >-
         python src/example.py
       workdir: "$SRC_DIR"
@@ -63,8 +73,13 @@ spec:
   - name: jupyter
     displayName: Jupyter
     images:
+    {{- if .useTutorialsImage.value }}
+      gpu: "kuberlab/fastai:0.7.0"
+      cpu: "kuberlab/fastai:0.7.0-gpu"
+    {{- else }}
       gpu: "kuberlab/fastai:latest-gpu"
       cpu: "kuberlab/fastai:latest-cpu"
+    {{- end }}
     resources:
       accelerators:
       {{- if .useGPU.value }}

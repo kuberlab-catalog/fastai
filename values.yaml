@@ -16,6 +16,12 @@ useGPU:
     name: Enable GPU in Jupyter
     kind: boolean
 
+useTutorialsImage:
+  value: false
+  wizard:
+    name: Use fastai tutorials image
+    kind: boolean
+
 tensorboard:
   value: true
   wizard:
