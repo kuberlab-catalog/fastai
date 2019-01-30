@@ -5,7 +5,7 @@ RUN pip --no-cache-dir install tensorboardX
 RUN conda install pytorch==0.3.1 -c pytorch
 
 RUN pip install tensorflow==1.9.0 && \
-  pip install fastai==0.7.0 && pip install torchtext==0.2.3
+  pip install 'fastai==0.7.0' 'torchtext==0.2.3' keras
 
 # Install ONNX and onnx-tf for torch -> onnx -> tensorflow conversion
 #RUN apt-get update && apt-get install -y \
