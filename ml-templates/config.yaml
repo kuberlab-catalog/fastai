@@ -37,6 +37,34 @@ spec:
           cpu: "2"
           memory: 4Gi
       default_volume_mapping: true
+  {{- if .lessons.value }}
+  - name: load-lessons
+    resources:
+    - name: worker
+      replicas: 1
+      restartPolicy: Never
+      maxRestartCount: 0
+      allowFail: true
+      images:
+        gpu: "kuberlab/fastai:latest-gpu"
+        cpu: "kuberlab/fastai:latest-cpu"
+      command: >-
+        kdataset pull {{ .lessons.workspace }} {{ .lessons.value }}:{{ .lessons.version }} --output lessons.tar;
+        tar -xvf lessons.tar;
+        rm lessons.tar
+      workdir: "$LESSONS_DIR"
+      resources:
+        accelerators:
+          gpu: 0
+        requests:
+          cpu: "1"
+          memory: 1Gi
+        limits:
+          cpu: "2"
+          memory: 4Gi
+      volumes:
+      - name: lessons
+  {{- end }}
   - name: train
     resources:
     - name: worker
@@ -153,6 +181,8 @@ spec:
     {{- else }}
     clusterStorage: {{ .storage.value }}
     {{- end }}
+  - name: lessons
+    clusterStorage: {{ .storage.value }}
   - mountPath: /notebooks
     name: code
     subPath: code

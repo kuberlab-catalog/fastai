@@ -22,12 +22,20 @@ tensorboard:
     name: Install Tensorboard
     kind: boolean
 
-dataset:
-  value: 'mnist'
-  version: '1.0.0'
+lessons:
+  value: 'fastai-lessons-v3'
+  version: '0.0.1'
   workspace: 'kuberlab-demo'
   wizard:
-    name: "Dataset configuration"
+    name: "Lessons notebooks"
+    kind: dataset
+
+dataset:
+  value: 'fastai-cource-v3'
+  version: '0.0.2'
+  workspace: 'kuberlab-demo'
+  wizard:
+    name: "Lessons data for training"
     kind: dataset
 
 # Pip packages may be specified here in format that pip accepts.
