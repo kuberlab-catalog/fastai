@@ -39,7 +39,7 @@ def main():
     model_location = path.join(args.train_dir, "model")
     model_location = learn.save(model_location, return_path=True)
     print('Model saved to %s' % model_location)
-    m.update_task_info({'model_location': model_location})
+    m.update_task_info({'model_location': str(model_location)})
 
     print('Network structure:')
     learn.model.eval()
