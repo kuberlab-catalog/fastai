@@ -17,7 +17,7 @@ useGPU:
     kind: boolean
 
 tensorboard:
-  value: true
+  value: false
   wizard:
     name: Install Tensorboard
     kind: boolean
@@ -30,6 +30,12 @@ lessons:
     name: "Lessons notebooks"
     kind: dataset
 
+installLessons:
+  value: true
+  wizard:
+    name: Install cource lessons immediately
+    kind: boolean
+
 dataset:
   value: 'fastai-cource-v3'
   version: '0.0.2'
@@ -39,5 +45,4 @@ dataset:
     kind: dataset
 
 # Pip packages may be specified here in format that pip accepts.
-packages:
-
+packages: []

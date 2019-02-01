@@ -11,34 +11,8 @@ spec:
     manager: "pip{{.python_version.value}}"
   default_mount_path: "/notebooks"
   tasks:
-  - name: download-cource-v3
-    resources:
-    - name: worker
-      replicas: 1
-      restartPolicy: Never
-      maxRestartCount: 0
-      allowFail: true
-      images:
-        gpu: "kuberlab/fastai:latest-gpu"
-        cpu: "kuberlab/fastai:latest-cpu"
-      command: >-
-        git clone https://github.com/fastai/course-v3;
-        cd course-v3/nbs/dl1;
-        mkdir $CODE_DIR/course-v3;
-        cp -r * $CODE_DIR/course-v3/
-      workdir: "$SRC_DIR"
-      resources:
-        accelerators:
-          gpu: 0
-        requests:
-          cpu: "1"
-          memory: 1Gi
-        limits:
-          cpu: "2"
-          memory: 4Gi
-      default_volume_mapping: true
   {{- if .lessons.value }}
-  - name: load-lessons
+  - name: {{ if .installLessons.value }}kibernetika-init{{ else }}install-lessons{{ end }}
     resources:
     - name: worker
       replicas: 1
@@ -77,33 +51,6 @@ spec:
         cpu: "kuberlab/fastai:latest-cpu"
       command: >-
         python src/example.py --train-dir $TRAINING_DIR
-      workdir: "$SRC_DIR"
-      resources:
-        accelerators:
-          gpu: 0
-        requests:
-          cpu: "1"
-          memory: 1Gi
-        limits:
-          cpu: "2"
-          memory: 4Gi
-      default_volume_mapping: true
-  - name: get-dogscats
-    resources:
-    - name: worker
-      replicas: 1
-      restartPolicy: Never
-      maxRestartCount: 0
-      allowFail: true
-      images:
-        gpu: "kuberlab/fastai:latest-gpu"
-        cpu: "kuberlab/fastai:latest-cpu"
-      command: >-
-        wget http://files.fast.ai/data/dogscats.zip;
-        apt-get install unzip;
-        unzip dogscats.zip;
-        cd dogscats;
-        kdataset push $WORKSPACE_NAME fastai:1.0.0-dogscats --create --publish
       workdir: "$SRC_DIR"
       resources:
         accelerators:
