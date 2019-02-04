@@ -31,6 +31,7 @@ def main():
     args = parse_args()
     data_dir = path.join(args.train_dir, 'mnist_sample')
     learn_path = None
+    data_path = ''
     if args.use_dataset:
         learn_path = data_path
         data_path = Path(path.join(environ.get('DATA_DIR', ''), 'mnist_sample'))
