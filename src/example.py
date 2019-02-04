@@ -30,11 +30,11 @@ def main():
 
     args = parse_args()
     data_dir = path.join(args.train_dir, 'mnist_sample')
+    learn_path = None
     if args.use_dataset:
         learn_path = data_path
         data_path = Path(path.join(environ.get('DATA_DIR', ''), 'mnist_sample'))
     else:
-        learn_path = None
         data_path = untar_data(URLs.MNIST_SAMPLE, fname=tempfile.mktemp(), dest=data_dir)
     print('Using path %s' % data_path)
     m.update_task_info({'data_path': str(data_path)})
