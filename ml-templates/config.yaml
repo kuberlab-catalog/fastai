@@ -50,7 +50,7 @@ spec:
         gpu: "kuberlab/fastai:latest-gpu"
         cpu: "kuberlab/fastai:latest-cpu"
       command: >-
-        python src/example.py --train-dir $TRAINING_DIR
+        python src/example.py --train-dir $TRAINING_DIR --use-dataset True
       workdir: "$SRC_DIR"
       resources:
         accelerators:
@@ -115,6 +115,7 @@ spec:
   - gitRepo:
       repository: {{ gitRepo .src.value }}
     name: src
+    subPath: {{ gitRepo .src.subPath }}
   - isLibDir: true
     name: lib
     clusterStorage: {{ .storage.value }}

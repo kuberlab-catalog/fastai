@@ -31,8 +31,10 @@ def main():
     args = parse_args()
     data_dir = path.join(args.train_dir, 'mnist_sample')
     if args.use_dataset:
+        learn_path = data_path
         data_path = Path(path.join(environ.get('DATA_DIR', ''), 'mnist_sample'))
     else:
+        learn_path = None
         data_path = untar_data(URLs.MNIST_SAMPLE, fname=tempfile.mktemp(), dest=data_dir)
     print('Using path %s' % data_path)
     m.update_task_info({'data_path': str(data_path)})
@@ -40,7 +42,8 @@ def main():
     data = ImageDataBunch.from_folder(data_path, ds_tfms=(rand_pad(2, 28), []), bs=64)
     data.normalize(imagenet_stats)
 
-    learn = create_cnn(data, models.resnet18, metrics=accuracy)
+
+    learn = create_cnn(data, models.resnet18, path=learn_path, metrics=accuracy)
     learn.fit_one_cycle(1, 0.01)
     print('Accuracy %s' % str(accuracy(*learn.get_preds())))
     m.update_task_info({'accuracy': str(accuracy(*learn.get_preds()))})
