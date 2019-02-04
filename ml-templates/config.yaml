@@ -50,7 +50,7 @@ spec:
         gpu: "kuberlab/fastai:latest-gpu"
         cpu: "kuberlab/fastai:latest-cpu"
       command: >-
-        python example.py --train-dir $TRAINING_DIR --use-dataset True
+        python example.py --train-dir $TRAINING_DIR
       workdir: "$SRC_DIR"
       resources:
         accelerators:
