@@ -6,7 +6,6 @@ storage:
 
 src:
   value: https://github.com/kuberlab-catalog/fastai/tree/master/src
-
   wizard:
     name: "Source Code"
     kind: git
