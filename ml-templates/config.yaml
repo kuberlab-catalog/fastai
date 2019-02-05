@@ -12,7 +12,10 @@ spec:
   default_mount_path: "/notebooks"
   tasks:
   {{- if .lessons.value }}
-  - name: {{ if .installLessons.value }}kibernetika-init{{ else }}install-lessons{{ end }}
+  - name: install-lessons
+    {{- if .installLessons.value }}
+    type: init
+    {{- end }}
     resources:
     - name: worker
       replicas: 1
