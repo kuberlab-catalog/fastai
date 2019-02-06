@@ -26,7 +26,7 @@ tensorboard:
 
 lessons:
   value: 'fastai-lessons-v3'
-  version: '0.0.5'
+  version: '0.0.6'
   workspace: 'kuberlab-demo'
   wizard:
     name: "Lessons notebooks"
@@ -40,7 +40,7 @@ installLessons:
 
 dataset:
   value: 'fastai-data-v3'
-  version: '0.0.6'
+  version: '0.0.7'
   workspace: 'kuberlab-demo'
   wizard:
     name: "Lessons data for training"
