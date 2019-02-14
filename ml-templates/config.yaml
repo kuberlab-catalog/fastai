@@ -34,13 +34,43 @@ spec:
         accelerators:
           gpu: 0
         requests:
+          cpu: "100m"
+          memory: 1Gi
+        limits:
+          cpu: "1"
+          memory: 4Gi
+      volumes:
+      - name: lessons
+  - name: run-lesson
+    resources:
+    - name: worker
+      replicas: 1
+      restartPolicy: Never
+      maxRestartCount: 0
+      allowFail: true
+      images:
+        gpu: "kuberlab/fastai:latest-gpu"
+        cpu: "kuberlab/fastai:latest-cpu"
+      command: >-
+        export LESSON=lesson2-sgd
+        && jupyter nbconvert --execute --to html $LESSONS_DIR/$LESSON.ipynb
+        && python submit_report.py $LESSONS_DIR/$LESSON.html
+        && rm $LESSONS_DIR/$LESSON.html
+      workdir: "$LESSONS_DIR"
+      resources:
+        accelerators:
+        {{- if .useGPU.value }}
+          gpu: 1
+        {{- else }}
+          gpu: 0
+        {{- end }}
+        requests:
           cpu: "1"
           memory: 1Gi
         limits:
           cpu: "2"
           memory: 4Gi
-      volumes:
-      - name: lessons
+      default_volume_mapping: true
   {{- end }}
   - name: train
     resources:
@@ -57,7 +87,7 @@ spec:
       workdir: "$SRC_DIR"
       resources:
         accelerators:
-          gpu: 0
+          gpu: 1
         requests:
           cpu: "1"
           memory: 1Gi
