@@ -125,15 +125,12 @@ spec:
   - isLibDir: true
     name: lib
     clusterStorage: {{ .storage.value }}
+  {{- if .mountData.value }}
   - name: data
-    {{- if .dataset.value }}
-    datasetFS:
-      workspace: {{ .dataset.workspace }}
-      dataset: {{ .dataset.value }}
-      version: {{ .dataset.version }}
-    {{- else }}
     clusterStorage: {{ .storage.value }}
-    {{- end }}
+    subPath: "/shared/fastai-data",
+    readOnly: true
+  {{- end }}
   - name: lessons
     clusterStorage: {{ .storage.value }}
   - mountPath: /notebooks

@@ -24,6 +24,12 @@ tensorboard:
     name: Install Tensorboard
     kind: boolean
 
+mountData:
+  value: true
+  wizard:
+    name: Mount existing on cluster storage lesson's data (/shared/fastai-data)
+    kind: boolean
+
 lessons:
   value: 'fastai-lessons-v3'
   version: '0.0.7'
@@ -37,14 +43,6 @@ installLessons:
   wizard:
     name: Install cource lessons immediately
     kind: boolean
-
-dataset:
-  value: 'fastai-data-v3'
-  version: '0.0.11'
-  workspace: 'kuberlab-demo'
-  wizard:
-    name: "Lessons data for training"
-    kind: dataset
 
 # Pip packages may be specified here in format that pip accepts.
 packages: []
