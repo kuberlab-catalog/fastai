@@ -52,11 +52,8 @@ spec:
         gpu: "kuberlab/fastai:latest-gpu"
         cpu: "kuberlab/fastai:latest-cpu"
       command: >-
-        export LESSON=lesson2-sgd
-        && jupyter nbconvert --execute --to html $LESSONS_DIR/$LESSON.ipynb
-        && python submit_report.py $LESSONS_DIR/$LESSON.html
-        && rm $LESSONS_DIR/$LESSON.html
-      workdir: "$LESSONS_DIR"
+        jupyter nbconvert --execute --to html --stdout $LESSONS_DIR/lesson2-sgd.ipynb | python submit_report.py
+      workdir: "$SRC_DIR"
       resources:
         accelerators:
         {{- if .useGPU.value }}
