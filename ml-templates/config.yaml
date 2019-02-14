@@ -128,7 +128,7 @@ spec:
   {{- if .mountData.value }}
   - name: data
     clusterStorage: {{ .storage.value }}
-    subPath: "/shared/fastai-data",
+    subPath: "/shared/fastai-data"
     readOnly: true
   {{- end }}
   - name: lessons
