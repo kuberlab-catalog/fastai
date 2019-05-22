@@ -52,4 +52,5 @@ installLessons:
 
 # Pip packages may be specified here in format that pip accepts.
 packages: []
-python_version: 3
+python_version:
+ value: 3
