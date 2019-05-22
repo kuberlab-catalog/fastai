@@ -29,6 +29,12 @@ mountData:
   wizard:
     name: Mount existing on cluster storage lesson's data (/shared/fastai-data)
     kind: boolean
+    
+torchShared:
+  value: false
+  wizard:
+    name: Mount existing torch models zooo (/torch-models)
+    kind: boolean
 
 lessons:
   value: 'fastai-lessons-v3'
