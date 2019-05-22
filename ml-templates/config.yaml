@@ -163,6 +163,13 @@ spec:
     subPath: "/shared/fastai-data"
     readOnly: true
   {{- end }}
+  - name: torch-models
+    clusterStorage: {{ .storage.value }}
+    {{- if .torchShared.value }}
+    subPath: "/torch-models"
+    {{- end }}
+    mountPath: /root/.torch/models
+    readOnly: false
   - name: lessons
     clusterStorage: {{ .storage.value }}
   - mountPath: /notebooks
