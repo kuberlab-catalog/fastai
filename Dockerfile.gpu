@@ -1,6 +1,4 @@
 FROM kuberlab/pytorch:1.0.0-gpu-py3
 
-#RUN conda install -c fastai fastai
-RUN pip install dataclasses
-RUN conda install -c pytorch -c fastai fastai
+RUN pip install dataclasses conda install -c pytorch -c fastai fastai
 
