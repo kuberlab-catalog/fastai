@@ -160,9 +160,9 @@ spec:
   {{- if .data.value }}
   - name: data
     datasetFS:
-      workspace: .data.workspace
-      version: .data.version
-      dataset: .data.value
+      workspace: {{ .data.workspace }}
+      version: {{ .data.version }}
+      dataset: {{ .data.value }}
   {{- end }}
   - name: torch-models
     clusterStorage: {{ .storage.value }}
