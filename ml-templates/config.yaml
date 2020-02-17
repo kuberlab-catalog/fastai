@@ -157,11 +157,12 @@ spec:
   - isLibDir: true
     name: lib
     clusterStorage: {{ .storage.value }}
-  {{- if .mountData.value }}
+  {{- if .data.value }}
   - name: data
-    clusterStorage: {{ .storage.value }}
-    subPath: "/shared/fastai-data"
-    readOnly: true
+    datasetFS:
+      workspace: .data.workspace
+      version: .data.version
+      dataset: .data.value
   {{- end }}
   - name: torch-models
     clusterStorage: {{ .storage.value }}

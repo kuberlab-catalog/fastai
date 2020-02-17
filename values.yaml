@@ -24,12 +24,14 @@ tensorboard:
     name: Install Tensorboard
     kind: boolean
 
-mountData:
-  value: true
+data:
+  value: fastai-data-v3
+  workspace: kuberlab-demo
+  version: 1.0.0
   wizard:
-    name: Mount existing on cluster storage lesson's data (/shared/fastai-data)
-    kind: boolean
-    
+    name: Lesson's data
+    kind: dataset
+
 torchShared:
   value: false
   wizard:
@@ -37,11 +39,11 @@ torchShared:
     kind: boolean
 
 lessons:
-  value: 'fastai-lessons-v3'
-  version: '0.0.8'
-  workspace: 'kuberlab-demo'
+  value: fastai-lessons-v3
+  version: 0.0.8
+  workspace: kuberlab-demo
   wizard:
-    name: "Lessons notebooks"
+    name: Lessons notebooks
     kind: dataset
 
 installLessons:
