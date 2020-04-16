@@ -40,7 +40,7 @@ torchShared:
 
 lessons:
   value: fastai-lessons-v3
-  version: 0.0.8
+  version: 0.0.9
   workspace: kuberlab-demo
   wizard:
     name: Lessons notebooks

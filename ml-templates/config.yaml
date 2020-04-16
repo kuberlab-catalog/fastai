@@ -51,7 +51,7 @@ spec:
       images:
         gpu: "kuberlab/fastai:latest-gpu"
         cpu: "kuberlab/fastai:latest-cpu"
-      command: "jupyter nbconvert $LESSONS_DIR/lesson2-sgd.ipynb --execute --to html --stdout --ExecutePreprocessor.timeout=-1 | python submit_report.py"
+      command: "jupyter nbconvert $LESSONS_DIR/part1/lesson2-sgd.ipynb --execute --to html --stdout --ExecutePreprocessor.timeout=-1 | python submit_report.py"
       workdir: "$SRC_DIR"
       resources:
         accelerators:
