@@ -1,4 +1,4 @@
-Description: Fast.ai
+Description: Practical Deep Learning for Coders, Part 1
 Engine: gotpl
 Home: http://kuberlab.com
 Icon: https://storage.googleapis.com/kuberlab-images/fastai.jpg
@@ -11,6 +11,6 @@ Keywords:
 Maintainers:
 - Email: nmahotkin@kuberlab.com
   Name: Makhotkin Nikolay
-Name: fastai
+Name: fast.ai
 Version: 1.0.0
 Type: mlapp-v2
