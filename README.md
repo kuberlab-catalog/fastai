@@ -1,8 +1,6 @@
 # Practical Deep Learning for Coders, Part 1
 
-This project contains lessons material for Part 1 of the data science course Practical Deep Learning for Coders.
-
-https://course.fast.ai
+This project contains lessons material for Part 1 of the data science course [Practical Deep Learning for Coders](https://course.fast.ai).
 
 
 
