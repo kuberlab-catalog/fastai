@@ -7,6 +7,7 @@ https://course.fast.ai
 
 
 Lessons are using fastai library, which simplifies training fast and accurate neural nets using modern best practices.
+
 See the [fastai website](https://docs.fast.ai) to get started. The library is based on research
 into deep learning best practices undertaken at [fast.ai](http://www.fast.ai), and includes
 \"out of the box\" support for [`vision`](https://docs.fast.ai/vision.html#vision),
