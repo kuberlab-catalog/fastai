@@ -4,7 +4,7 @@ This project contains lessons material for Part 1 of the data science course [Pr
 
 
 
-Lessons are using fastai library, which simplifies training fast and accurate neural nets using modern best practices.
+Lessons are based on **fastai** library, which simplifies training fast and accurate neural nets using modern best practices.
 
 See the [fastai website](https://docs.fast.ai) to get started. 
 
