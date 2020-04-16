@@ -15,4 +15,4 @@ The library is based on research into deep learning best practices undertaken at
 [`text`](https://docs.fast.ai/text.html#text), [`tabular`](https://docs.fast.ai/tabular.html#tabular),
 and [`collab`](https://docs.fast.ai/collab.html#collab) (collaborative filtering) models. 
 
-The full [documentation](https://docs.fast.ai/). 
+The full library [documentation](https://docs.fast.ai/) is available.
