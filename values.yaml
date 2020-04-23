@@ -27,7 +27,7 @@ tensorboard:
 data:
   value: fastai-data-v3
   workspace: kuberlab-demo
-  version: 1.0.1
+  version: 1.0.2
   wizard:
     name: Lesson's data
     kind: dataset
@@ -40,7 +40,7 @@ torchShared:
 
 lessons:
   value: fastai-lessons-v3
-  version: 0.1.0
+  version: 0.1.1
   workspace: kuberlab-demo
   wizard:
     name: Lessons notebooks
